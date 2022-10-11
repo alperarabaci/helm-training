@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Training
+  {{"Helm-Templating"}}, {{"Cool"}}
+  {{.Values.my.custom.data}}
+  {{.Chart.Name}}
+  {{.Chart.Version}}
+  {{.Chart.AppVersion}}
+  {{.Release.Name}}
+  {{.Release.Namespace}}
+  {{.Release.Service}}
+  {{.Release.IsInstall}}
+  {{.Release.IsUpgrade}}
+  {{.Template.Name}}
+  {{.Template.BasePath}}
+  
+  {{.Values.my.custom.data | default "testdefault" | upper | quote}}
+
+  {{- if .Values.my.flag }}
+    {{"Helm-TemplatingG"}},{{"Output of if"}}
+  {{- else }}
+    {{"Helm-TemplatingG"}}, {{"Output of else" | nindent 2}}
+  {{- end }}
+
+  {{- with .Values.my.values }}
+  {{- toYaml . | nindent 2 }}
+  {{- end}}
+
+  {{ $myFlag := .Values.my.flag }}
+  {{"MyFlag"}},{{ $myFlag }}
+
+  {{- range .Values.my.values }}
+    - {{ . | upper | quote  }}
+  {{- end}}
+
+  {{"Loop Dict Types"}}
+
+  {{- range $key,$value := .Values.image }}
+    - {{$key}} {{$value | quote}}
+  {{- end}}

@@ -1,0 +1,51 @@
+jammer@Alpers-MacBook-Pro tools % helm install mydb bitnami/mysql
+NAME: mydb
+LAST DEPLOYED: Fri Oct  7 18:35:46 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: mysql
+CHART VERSION: 9.3.4
+APP VERSION: 8.0.30
+
+** Please be patient while the chart is being deployed **
+
+Tip:
+
+  Watch the deployment status using the command: kubectl get pods -w --namespace default
+
+Services:
+
+  echo Primary: mydb-mysql.default.svc.cluster.local:3306
+
+Execute the following to get the administrator credentials:
+
+  echo Username: root
+  MYSQL_ROOT_PASSWORD=$(kubectl get secret --namespace default mydb-mysql -o jsonpath="{.data.mysql-root-password}" | base64 -d)
+
+To connect to your database:
+
+  1. Run a pod that you can use as a client:
+
+      kubectl run mydb-mysql-client --rm --tty -i --restart='Never' --image  docker.io/bitnami/mysql:8.0.30-debian-11-r15 --namespace default --env MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD --command -- bash
+
+  2. To connect to primary service (read/write):
+
+      mysql -h mydb-mysql.default.svc.cluster.local -uroot -p"$fTpxn649OA"
+
+
+pass: fTpxn649OA
+
+
+##########################################################################################################################################################
+Pass password to helm
+##########################################################################################################################################################
+
+helm install mydb bitnami/mysql --values values.yaml
+
+Upgrade
+
+helm upgrade mydb bitnami/mysql --values values.yaml
+helm upgrade mydb bitnami/mysql --reuser-values
