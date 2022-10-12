@@ -91,6 +91,7 @@ mysql:
   primary:
     service: 
       type: NodePort
-      nodePort: 32762
+      nodePorts:
+        mysql: 32762
   fullnameOverride: docker-mysql
   initdbScriptsConfigMap: mysql-initdb-config  
