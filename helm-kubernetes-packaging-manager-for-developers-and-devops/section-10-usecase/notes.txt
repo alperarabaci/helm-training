@@ -1,3 +1,7 @@
 helm create coupon-service-chart
 
 helm dependency update coupon-service-chart
+
+# after update files
+cd coupon-service-chart
+helm install couponservice .

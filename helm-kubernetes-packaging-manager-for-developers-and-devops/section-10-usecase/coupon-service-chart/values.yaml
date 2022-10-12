@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   registry: docker.io
-  repository: bharath19/couponservice
+  repository: bharatht19/couponservice
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
