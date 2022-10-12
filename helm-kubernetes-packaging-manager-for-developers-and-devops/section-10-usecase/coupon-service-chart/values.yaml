@@ -83,3 +83,12 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+mysql:
+  auth:
+    rootPassword: test1234
+    database: mydb
+  primary: 
+    type: NodePort
+    nodePort: 32762
+  fullnameOverride: docker-mysql  
