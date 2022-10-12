@@ -1,7 +1,17 @@
 # initials
 ```console
 helm create coupon-service-chart
+```
+# dependency
+mysql dependency in chart.yaml
+```yaml
+dependencies:
+  - name: mysql
+    version: "8.0.31"
+    repository: "@bitnami"
+``` 
 
+```console
 helm dependency update coupon-service-chart
 ```
 
