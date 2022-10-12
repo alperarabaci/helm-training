@@ -28,7 +28,7 @@ helm myplugin
 the plug-in myplugin is located in /Users/jammer/Library/helm/plugins/plug-in
 ```
 
-we can also add platform dependent commands.
+We can also add platform dependent commands.
 ```yaml
 name: "last"
 version: "0.1.0"
