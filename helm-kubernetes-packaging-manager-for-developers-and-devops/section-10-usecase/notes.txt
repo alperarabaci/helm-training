@@ -1,1 +1,3 @@
 helm create coupon-service-chart
+
+helm dependency update coupon-service-chart
